@@ -55,7 +55,7 @@ shopt -u extglob
 
 status "Setting up nginx"
 tar xzf $compile_nginx_tgz
-
+ls
 
 [[ -f $build_dir/public/nginx.conf ]] && mv $build_dir/public/nginx.conf nginx/conf/nginx.conf
 [[ -f $build_dir/public/mime.types ]] && mv $build_dir/public/mime.types nginx/conf/mime.types
