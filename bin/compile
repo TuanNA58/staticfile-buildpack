@@ -21,6 +21,7 @@ BUILDPACK_PATH=$compile_buildpack_dir source $compile_buildpack_dir/compile-exte
 translated_url=$($compile_buildpack_dir/compile-extensions/bin/download_dependency nginx.tgz /tmp)
 echo "Downloaded [$translated_url]"
 compile_nginx_tgz=$compile_buildpack_dir/nginx.tar.gz
+echo $build_dir
 cd $build_dir
 
 # Alternate root location (default is root of project) for html/js/css
@@ -54,8 +55,7 @@ shopt -u extglob
 
 status "Setting up nginx"
 tar xzf $compile_nginx_tgz
-cp -f $compile_buildpack_dir/conf/nginx.conf nginx/conf/nginx.conf
-cp -f $compile_buildpack_dir/conf/mime.types nginx/conf/mime.types
+
 
 [[ -f $build_dir/public/nginx.conf ]] && mv $build_dir/public/nginx.conf nginx/conf/nginx.conf
 [[ -f $build_dir/public/mime.types ]] && mv $build_dir/public/mime.types nginx/conf/mime.types
